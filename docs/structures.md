@@ -10,12 +10,14 @@ MVPをシンプルに構築し、可読性と拡張性を両立することを�
 
 ```
 /to-do-app
-├── index.html         # エントリーポイント
-├── styles.css         # スタイルシート
-├── app.js             # メインスクリプト
-├── requirements.md    # 要件定義
-├── data_structures.md # データ設計
-└── structures.md      # 構成設計
+├── docs/
+│   ├── requirements.md    # 要件定義
+│   ├── data_structures.md # データ設計
+│   └── structures.md      # 構成設計
+├── index.html             # エントリーポイント
+├── styles.css             # スタイルシート
+├── app.js                 # メインスクリプト
+└── README.md              # 開発の概要
 ```
 
 ---
@@ -27,9 +29,10 @@ MVPをシンプルに構築し、可読性と拡張性を両立することを�
 | `index.html` | UI構造とフォーム・リストの定義 |
 | `styles.css` | レイアウト・配色・レスポンシブ対応 |
 | `app.js` | 状態管理・イベント処理・レンダリング |
-| `requirements.md` | 機能要件・非機能要件の整理 |
-| `data_structures.md` | データモデル・永続化仕様 |
-| `structures.md` | 構成・設計方針の記録 |
+| `docs/requirements.md` | 機能要件・非機能要件の整理 |
+| `docs/data_structures.md` | データモデル・永続化仕様 |
+| `docs/structures.md` | 構成・設計方針の記録 |
+| `README.md` | プロジェクト概要・セットアップ手順 |
 
 ---
 
