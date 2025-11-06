@@ -22,7 +22,6 @@ main {
   gap: 32px;
 }
 
-/* ヘッダー */
 header {
   align-self: flex-start;
   text-align: left;
@@ -34,7 +33,6 @@ h1 {
   letter-spacing: 0.05em;
 }
 
-/* 入力フォーム */
 .todo-input form {
   display: flex;
   gap: 12px;
@@ -57,7 +55,6 @@ h1 {
   cursor: pointer;
 }
 
-/* ToDoリスト */
 .todo-list ul {
   list-style: none;
   margin: 0;
@@ -68,6 +65,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 14px 16px;
   border: 1px solid #e3e7f1;
   border-radius: 10px;
@@ -75,10 +73,35 @@ h1 {
   margin-bottom: 10px;
 }
 
-.todo-list button {
+.todo-list li span {
+  flex: 1;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-action {
   font-size: 14px;
-  color: #ef4444;
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+.todo-toggle {
+  color: #3a6df0;
+}
+
+.todo-delete {
+  color: #ef4444;
+}
+
+.todo-list li.completed span {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.todo-list li.completed {
+  background: #e2e8f0;
 }
