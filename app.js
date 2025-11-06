@@ -8,11 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		return;
 	}
 
-	const existingItems = Array.from(list.querySelectorAll("li"))
-		.map((item) => item.textContent.trim())
-		.filter((text) => text.length > 0);
-	list.innerHTML = "";
-	existingItems.forEach((text) => addTodoItem(text));
+	let todos = loadToDos();
+
+	renderToDos(todos);
 
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
@@ -25,20 +23,48 @@ document.addEventListener("DOMContentLoaded", () => {
 			alert("ToDo is too long. Maximum length is " + MAX_LENGTH + " characters.");
 			return;
 		}
-		addTodoItem(text);
+		const todo = {
+			id: crypto.randomUUID(),
+			text,
+			completed: false,
+		};
+		todos.push(todo);
+
+		appendToDoItem(todo);
+		saveToDos(todos);
 		input.value = "";
 	});
 
-	function addTodoItem(text) {
+	function renderToDos(todos) {
+		list.innerHTML = "";
+		todos.forEach((todo) => appendToDoItem(todo));
+	}
+
+	function saveToDos(todos) {
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}
+
+	function loadToDos() {
+		const raw = localStorage.getItem("todos");
+		if (!raw)
+			return [];
+		return JSON.parse(raw);
+	}
+
+	function appendToDoItem(todo) {
 		const li = document.createElement("li");
+		li.dataset.id = todo.id;
 		const label = document.createElement("span");
-		label.textContent = text;
+		label.textContent = todo.text;
+		if (todo.completed)
+			li.classList.add("completed");
 
 		const deleteBtn = document.createElement("button");
-		deleteBtn.type = "button";
 		deleteBtn.textContent = "削除";
 		deleteBtn.addEventListener("click", () => {
+			todos = todos.filter((item) => item.id !== todo.id);
 			li.remove();
+			saveToDos(todos);
 		});
 
 		li.append(label, deleteBtn);
